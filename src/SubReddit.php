@@ -106,7 +106,7 @@ class SubReddit
         return $ret;
     }
 
-    final public function Poll(): void {
+    final public function Poll(int $seconds): void {
         while (true) {
             for ($i = 0; $i < $this->limit; $i++) {
                 if ($this->CheckNewPost($i)) {
@@ -115,7 +115,7 @@ class SubReddit
                     echo("\nno new posts");
                 }
             }
-            sleep(60);
+            sleep($seconds);
         }
     }
 }
