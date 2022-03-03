@@ -2,8 +2,6 @@
 
 require("vendor/autoload.php");
 use skrtdev\NovaGram\Bot;
-use skrtdev\NovaGram\CurlException;
-use skrtdev\Telegram\Message;
 
 class SubReddit
 {
@@ -59,8 +57,10 @@ class SubReddit
     /**
      * @throws JsonException
      */
-    private function IsSamePost(int $i): bool {
-        return $this->LastTitle === $this->GetJSON($i)['title'];
+    final public function CheckNewPost(int $i): bool {
+        $PostTitle = $this->GetJSON($i)['title'];
+
+        return $PostTitle !== $this->LastTitle;
     }
 
     /**
@@ -75,7 +75,7 @@ class SubReddit
                 "\n<a href=\"https://reddit.com" . $this->GetJSON($i)['permalink'] . "\">post link</a>\n\nfrom <em>" .
                 $this->GetJSON($i)['subreddit_name_prefixed'] . "</em>, by @adhd_subreddit\n";
 
-            if (!$this->IsSamePost($i) && $this->PostIsVideo($i)) {
+            if ($this->PostIsVideo($i)) {
 
                 $ret = (bool)$this->Bot->sendVideo([
                     "chat_id" => $this->ChatID,
@@ -83,9 +83,7 @@ class SubReddit
                     "caption" => $caption
                 ]);
 
-                $this->LastTitle = $this->GetJSON($i)['title'];
-
-            } elseif (!$this->IsSamePost($i) && $this->PostIsPhoto($i)) {
+            } elseif ($this->PostIsPhoto($i)) {
 
                 $ret = (bool)$this->Bot->sendPhoto([
                     "chat_id" => $this->ChatID,
@@ -93,9 +91,7 @@ class SubReddit
                     "caption" => $caption
                 ]);
 
-                $this->LastTitle = $this->GetJSON($i)['title'];
-
-            } elseif (!$this->IsSamePost($i)) {
+            } else {
 
                 $ret = (bool)$this->Bot->sendMessage([
                     "chat_id" => $this->ChatID,
@@ -103,11 +99,23 @@ class SubReddit
                     "disable_web_page_preview" => true
                 ]);
 
-                $this->LastTitle = $this->GetJSON($i)['title'];
-
             }
-            echo "\nlast_title: " . $this->LastTitle;
+
+            $this->LastTitle = $this->GetJSON($i)['title'];
         }
         return $ret;
+    }
+
+    final public function Poll(): void {
+        while (true) {
+            for ($i = 0; $i < $this->limit; $i++) {
+                if ($this->CheckNewPost($i)) {
+                    $this->SendPost();
+                } else {
+                    echo("\nno new posts");
+                }
+            }
+            sleep(60);
+        }
     }
 }
