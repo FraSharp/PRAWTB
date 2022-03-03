@@ -7,5 +7,5 @@ $SubReddit = new SubReddit($SubRedditName)
 $SubReddit->SetSubRedditPostsLimit(1);
 
 // sends the post, returns a bool
-$SubReddit->sendPost();
+$SubReddit->Poll();
 ```
