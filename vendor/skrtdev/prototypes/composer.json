@@ -1,0 +1,29 @@
+{
+    "name":"skrtdev/prototypes",
+    "description":"A simple library that make possible to dinamically add methods to classes",
+    "license":"MIT",
+    "authors":[
+        {
+            "name":"Gaetano Sutera",
+            "email":"gaetanosutera@yahoo.it",
+            "role":"Developer"
+        }
+    ],
+    "require":{
+        "php":"^7.4 | ^8"
+    },
+    "require-dev": {
+        "php":"^8",
+        "phpunit/phpunit":"^9"
+    },
+    "autoload":{
+        "psr-4":{
+            "skrtdev\\Prototypes\\":"src/"
+        }
+    },
+    "autoload-dev":{
+        "psr-4":{
+            "skrtdev\\PrototypesTests\\":"tests/"
+        }
+    }
+}

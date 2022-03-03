@@ -1,0 +1,36 @@
+{
+    "name":"skrtdev/novagram",
+    "description":"An Object-Oriented PHP Library for Telegram Bots",
+    "license":"MIT",
+    "authors":[
+        {
+            "name":"Gaetano Sutera",
+            "email":"gaetanosutera@yahoo.it",
+            "role":"Developer"
+        }
+    ],
+    "require":{
+        "php":">=7.4",
+        "ext-json":"*",
+        "ext-curl":"*",
+        "skrtdev/async":"^1.0",
+        "monolog/monolog":"^2.1",
+        "symfony/polyfill-php80": "^1.22",
+        "skrtdev/prototypes": "^1.0"
+    },
+    "suggest": {
+        "ext-mbstring":"Needed to use the built-in Telegram Entites Parser",
+        "ext-pdo":"Needed to use the built-in Database",
+        "ext-pcntl":"Needed to process updates with multi-processing",
+        "danog/tg-file-decoder": "DC resolver helper"
+    },
+    "autoload": {
+        "psr-4":{
+            "skrtdev\\Telegram\\": ["src/Telegram/Types", "src/Telegram/Exceptions"],
+            "skrtdev\\": "src/"
+        },
+        "files":[
+            "src/NovaGram/helpers.php"
+        ]
+    }
+}

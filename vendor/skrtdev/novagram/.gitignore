@@ -1,0 +1,18 @@
+### Composer ###
+*.phar
+/vendor/
+tests
+composer.lock
+
+### vscode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### phpstorm ###
+.idea/
+
+topic/

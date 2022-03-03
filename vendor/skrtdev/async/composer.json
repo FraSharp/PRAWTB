@@ -1,0 +1,24 @@
+{
+    "name":"skrtdev/async",
+    "description":"",
+    "license":"MIT",
+    "authors":[
+        {
+            "name":"Gaetano Sutera",
+            "email":"gaetanosutera@yahoo.it",
+            "role":"Developer"
+        }
+    ],
+    "require":{
+        "php":">=7.4"
+    },
+    "autoload": {
+        "psr-4":{
+            "skrtdev\\async\\": "src/"
+        },
+        "files":[
+            "src/range.php",
+            "src/helpers.php"
+        ]
+    }
+}

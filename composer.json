@@ -1,0 +1,5 @@
+{
+    "require": {
+        "skrtdev/novagram": "v2.x-dev"
+    }
+}
