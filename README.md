@@ -6,6 +6,6 @@ $SubReddit = new SubReddit($SubRedditName)
 // to set the number of posts to retrieve, 1 in this example
 $SubReddit->SetSubRedditPostsLimit(1);
 
-// sends the post, returns a bool
-$SubReddit->Poll();
+// checks for any new post every 60 seconds
+$SubReddit->Poll(60);
 ```
