@@ -2,3 +2,6 @@
 /.idea
 /*.iml
 /config.php
+/.phive
+/tools
+/.phpdoc
