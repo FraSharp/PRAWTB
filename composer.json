@@ -1,5 +1,7 @@
 {
     "require": {
-        "skrtdev/novagram": "v2.x-dev"
+        "skrtdev/novagram": "v2.x-dev",
+        "guzzle/http": "^3.9",
+        "guzzlehttp/guzzle": "^7.4"
     }
 }
