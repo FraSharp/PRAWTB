@@ -1,15 +1,23 @@
 <?php
+/**
+ * PHP script used to send latest reddit posts in a telegram channel automatically
+ *
+ * @version     0.1-alpha
+ * @author      Francesco Duca | FraSharp - 2022
+ * @since       0.1-alpha
+ */
+
 require("SubReddit.php");
 require("vendor/autoload.php");
 require("config.php");
 use skrtdev\NovaGram\Bot;
 use skrtdev\NovaGram\CurlException;
 
-/*
+/**
  * this function can be used to dump json body into a text file called "dump.txt", currently you get the last post
  * from r/frareddittest
- */
-/**
+ *
+ * @return void
  * @throws JsonException
  */
 function DumpJSON(): void {
