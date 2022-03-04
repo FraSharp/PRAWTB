@@ -9,7 +9,7 @@
 `bash run.sh`, that bash script will run php script always, even after an error
 
 #### Docs:
-[documentation]("./docs/index.html")
+[documentation](https://frasharp.github.io/PRAWTB/)
 
 #### Usage:
 ```php
