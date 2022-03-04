@@ -5,6 +5,12 @@
 - set `CHANNEL_ID`
 - set `SUBREDDIT_NAME`
 
+#### Run:
+`bash run.sh`, that bash script will run php script always, even after an error
+
+#### Docs:
+[documentation]("./docs/index.html")
+
 #### Usage:
 ```php
 $SubReddit = new SubReddit($SubRedditName)
