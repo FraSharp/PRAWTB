@@ -50,7 +50,6 @@ class SubReddit
     final public function PostIsVideo(int $i): bool {
         return isset($this->GetJSON($i)['media']) &&
             (!is_null($this->GetJSON($i)['media']) ||
-                !is_null($this->GetJSON($i)['media']) ||
                 !is_null($this->GetJSON($i)['media']['is_gif']));
     }
 
@@ -106,13 +105,17 @@ class SubReddit
         return $ret;
     }
 
+    // GetPost() which returns an array of the post information (isvideo, isphoto, selftext, title, subreddit, etc...)
+    // and it's used to store every post in another array
+    // put that array in a for, and SendPost() every position.
+    // NB: every position = post
+
     final public function Poll(int $seconds): void {
+        echo("\nPolling: checking for new post every $seconds seconds");
         while (true) {
             for ($i = 0; $i < $this->limit; $i++) {
                 if ($this->CheckNewPost($i)) {
                     $this->SendPost();
-                } else {
-                    echo("\nno new posts");
                 }
             }
             sleep($seconds);
